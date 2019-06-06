@@ -11,18 +11,18 @@ SS_IP=`ip route get 1 | awk '{print $NF;exit}'`
 #yum install epel-release -y
 #yum install gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto udns-devel libev-devel -y
 
-#ÐÞ¸Ässh¶Ë¿Ú
+##change ssh port
 #systemctl stop sshd.service
 #echo "Port ${SSH_PORT}">>/etc/ssh/sshd_config
 #echo "AddressFamily inet">>/etc/ssh/sshd_config
 #systemctl restart sshd.service
 #systemctl status sshd.service
 
-#¹Ø±Õ·À»ðÇ½
+##close firewall
 #systemctl stop firewalld 
 #systemctl disable firewalld.service 
 
-#°²×°iptables
+##iptables config
 #iptables -F
 #iptables -I INPUT -p tcp --dport ${SSH_PORT} -j ACCEPT
 #iptables -I INPUT -i lo -j ACCEPT
@@ -35,13 +35,14 @@ SS_IP=`ip route get 1 | awk '{print $NF;exit}'`
 #iptables -I INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 #iptables -vL --line-number
 
-#°²×°»ò¸üÐÂ·þÎñ
+##install iptables-service
 #yum install iptables-services 
 #systemctl enable iptables
 #systemctl start iptables
 #service iptables save
 #service iptables restart
 
+##git get shadowsocks
 #git clone https://github.com/shadowsocks/shadowsocks-libev.git
 #cd shadowsocks-libev
 #git submodule update --init --recursive
@@ -78,6 +79,7 @@ SS_IP=`ip route get 1 | awk '{print $NF;exit}'`
 #./autogen.sh && ./configure && make
 #make install
 
+##add path
 #echo "/usr/local/lib" >> /etc/ld.so.conf.d/local.conf
 #echo "/usr/local/lib" >> /etc/ld.so.conf
 #/sbin/ldconfig
