@@ -1,0 +1,97 @@
+#!/bin/bash
+
+SSH_PORT=8824
+SS_PORT=8823
+SS_PASSWORD=ysunq123456
+SS_METHOD=aes-256-cfb
+SS_IP=`ip route get 1 | awk '{print $NF;exit}'`
+
+#yum update
+#yum -y install make gcc gcc-c++ kernel-devel git autoconf libtool libssl-dev openssl openssl-devel net-tools.x86_64 wget  
+#yum install epel-release -y
+#yum install gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto udns-devel libev-devel -y
+
+#ÐÞ¸Ässh¶Ë¿Ú
+#systemctl stop sshd.service
+#echo "Port ${SSH_PORT}">>/etc/ssh/sshd_config
+#echo "AddressFamily inet">>/etc/ssh/sshd_config
+#systemctl restart sshd.service
+#systemctl status sshd.service
+
+#¹Ø±Õ·À»ðÇ½
+#systemctl stop firewalld 
+#systemctl disable firewalld.service 
+
+#°²×°iptables
+#iptables -F
+#iptables -I INPUT -p tcp --dport ${SSH_PORT} -j ACCEPT
+#iptables -I INPUT -i lo -j ACCEPT
+#iptables -I OUTPUT -o lo -j ACCEPT
+#iptables -P INPUT DROP
+#iptables -P FORWARD DROP
+#iptables -P OUTPUT ACCEPT
+#iptables -I INPUT -p tcp --dport ${SS_PORT} -j ACCEPT
+#iptables -I INPUT -p ICMP --icmp-type 8 -j ACCEPT
+#iptables -I INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+#iptables -vL --line-number
+
+#°²×°»ò¸üÐÂ·þÎñ
+#yum install iptables-services 
+#systemctl enable iptables
+#systemctl start iptables
+#service iptables save
+#service iptables restart
+
+#git clone https://github.com/shadowsocks/shadowsocks-libev.git
+#cd shadowsocks-libev
+#git submodule update --init --recursive
+#cd ..
+
+#mkdir tmpbuilddep
+#cd tmpbuilddep
+
+#wget https://tls.mbed.org/download/mbedtls-2.5.1-apache.tgz
+#tar zxvf  mbedtls-2.5.1-apache.tgz
+#cd mbedtls-2.5.1
+#make
+#make install
+#cd ..
+
+#wget https://download.libsodium.org/libsodium/releases/libsodium-1.0.16.tar.gz
+#tar zxvf libsodium-1.0.16.tar.gz
+#cd libsodium-1.0.16
+#./configure
+#make && make check
+#make install
+#cd ..
+
+#wget https://c-ares.haxx.se/download/c-ares-1.13.0.tar.gz
+#tar zxvf c-ares-1.13.0.tar.gz
+#cd c-ares-1.13.0
+#./configure
+#make && make check
+#make install
+#cd ..
+
+#cd ..
+#cd shadowsocks-libev
+#./autogen.sh && ./configure && make
+#make install
+
+#echo "/usr/local/lib" >> /etc/ld.so.conf.d/local.conf
+#echo "/usr/local/lib" >> /etc/ld.so.conf
+#/sbin/ldconfig
+
+
+echo "================================"
+echo ""
+echo "Congratulations! Shadowsocks has been installed on your system."
+echo "You shadowsocks connection info:"
+echo "--------------------------------"
+echo "server:      ${SS_IP}"
+echo "server_port: ${SS_PORT}"
+echo "password:    ${SS_PASSWORD}"
+echo "method:      ${SS_METHOD}"
+echo "--------------------------------"
+
+nohup /usr/local/bin/ss-server -s ${SS_IP} -p ${SS_PORT} -k ${SS_PASSWORD} -m ${SS_METHOD} &
