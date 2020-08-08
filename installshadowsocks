@@ -1,8 +1,8 @@
 #!/bin/bash
 
-SSH_PORT=8824
-SS_PORT=8823
-SS_PASSWORD=ysunq123456
+SSH_PORT=8525
+SS_PORT=8816
+SS_PASSWORD=ppsysunq@6611sina.com
 SS_METHOD=aes-256-cfb
 SS_IP=`ip route get 1 | awk '{print $NF;exit}'`
 
@@ -51,16 +51,16 @@ SS_IP=`ip route get 1 | awk '{print $NF;exit}'`
 #mkdir tmpbuilddep
 #cd tmpbuilddep
 
-#wget https://tls.mbed.org/download/mbedtls-2.5.1-apache.tgz
-#tar zxvf  mbedtls-2.5.1-apache.tgz
+#wget https://github.com/ARMmbed/mbedtls/archive/mbedtls-2.5.1.tar.gz
+#tar zxvf mbedtls-2.5.1.tar.gz
 #cd mbedtls-2.5.1
 #make
 #make install
 #cd ..
 
-#wget https://download.libsodium.org/libsodium/releases/libsodium-1.0.16.tar.gz
-#tar zxvf libsodium-1.0.16.tar.gz
-#cd libsodium-1.0.16
+#wget https://download.libsodium.org/libsodium/releases/libsodium-1.0.17.tar.gz
+#tar zxvf libsodium-1.0.17.tar.gz
+#cd libsodium-1.0.17
 #./configure
 #make && make check
 #make install
@@ -96,4 +96,4 @@ echo "password:    ${SS_PASSWORD}"
 echo "method:      ${SS_METHOD}"
 echo "--------------------------------"
 
-nohup /usr/local/bin/ss-server -s ${SS_IP} -p ${SS_PORT} -k ${SS_PASSWORD} -m ${SS_METHOD} &
+nohup /usr/local/bin/ss-server -s ${SS_IP} -p ${SS_PORT} -k ${SS_PASSWORD} -m ${SS_METHOD} -v -t 30 >nohup.log 2>&1 &

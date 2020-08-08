@@ -1,11 +1,8 @@
 #!/bin/sh
-while true;do
-count=`ps -A|grep ss-server`
-if [ "$?" != "0" ]; then
-echo "$(date "+%y-%m-%d %H:%M:%S") no ss-server, run it" >> /var/log/ssguardian.log
-/etc/init.d/shadowsocks start
+count=`ps -ef |grep /usr/local/bin/ss-server |grep -v "grep" |wc -l`
+if [ $count -eq 0 ]; then
+	echo "$(date "+%y-%m-%d %H:%M:%S") no ss-server, run it" >> /home/ysunq/ssguardian.log
+	/etc/init.d/shadowsocks start
 else
-echo "$(date "+%y-%m-%d %H:%M:%S") OK" >> /var/log/ssguardian.log
+	echo "$(date "+%y-%m-%d %H:%M:%S") test success already run" >> /home/ysunq/ssguardian.log
 fi
-sleep 10
-done
