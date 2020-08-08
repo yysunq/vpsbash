@@ -21,32 +21,33 @@ PID_PATH="/var/run/"
  
  
 start() {
-    if [ -e "$PID_PATH/$PROG.pid" ]; then
-        ## Program is running, exit with error.
-        echo "Error! $PROG is currently running!" 1>&2
-        exit 1
-    else
-        ## Change from /dev/null to something like /var/log/$PROG if you want to save output.
-        $PROG_PATH/$PROG $PROG_ARGS 2>&1 >/home/ysunq/$PROG.log &
-        pid=`pgrep $PROG`
-        echo "$PROG started"
-        echo $pid > "$PID_PATH/$PROG.pid"
-    fi
+	echo "begin start"
+	count=`ps -ef |grep /usr/local/bin/ss-server |grep -v "grep" |wc -l`
+	if [ $count -eq 1 ]; then
+		## Program is running, exit with error.
+		echo "Error! $PROG is currently running!" 1>&2
+		exit 1
+	else
+		## Change from /dev/null to something like /var/log/$PROG if you want to save output.
+		$PROG_PATH/$PROG $PROG_ARGS 2>&1 >/home/ysunq/$PROG.log &
+		echo "$PROG start success"
+	fi
 }
  
 stop() {
-    echo "begin stop"
-    if [ -e "$PID_PATH/$PROG.pid" ]; then
-        ## Program is running, so stop it
-        pid=`pgrep $PROG`
-        kill $pid
-        rm -f  "$PID_PATH/$PROG.pid"
-        echo "$PROG stopped"
-    else
-        ## Program is not running, exit with error.
-        echo "Error! $PROG not started!" 1>&2
-        exit 1
-    fi
+	echo "begin stop"
+	count=`ps -ef |grep /usr/local/bin/ss-server |grep -v "grep" |wc -l`
+	echo $count
+	if [ $count -eq 1 ]; then
+		## Program is running, so stop it
+		pid=`pgrep $PROG`
+		kill $pid
+		echo "$PROG stop sucess!!"
+	else
+		## Program is not running, exit with error.
+		echo "Error! $PROG not started!" 1>&2
+		exit 1
+	fi
 }
  
 ## Check to see if we are running as root first.
