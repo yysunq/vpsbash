@@ -1,5 +1,4 @@
 #!/bin/sh
-
 yum install epel-release -y
 yum install gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto udns-devel libev-devel -y
 yum install git
@@ -43,7 +42,8 @@ echo '/usr/local/lib' >> /etc/ld.so.conf.d/local.conf
 echo "/usr/local/lib" >> /etc/ld.so.conf
 /sbin/ldconfig
 
-
-
+#打开防火墙端口
+firewall-cmd --zone=public --add-port=8816/tcp --permanent 
+firewall-cmd --reload
 #如果make出错，用下面命令configure
 #./configure --with-sodium-include=/usr/local/include --with-sodium-lib=/usr/local/lib --with-mbedtls-include=/usr/local/include --with-mbedtls-lib=/usr/local/lib
