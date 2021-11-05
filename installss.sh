@@ -12,7 +12,7 @@ yum install git
 wget https://github.com/ARMmbed/mbedtls/archive/mbedtls-2.5.1.tar.gz --no-check-certificate
 tar -zxvf  mbedtls-2.5.1.tar.gz
 cd mbedtls-mbedtls-2.5.1
-make && make check
+make
 make install
 cd ..
 
