@@ -1,7 +1,11 @@
 #!/bin/sh
+yum update
+
 yum install epel-release -y
 yum install gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto udns-devel libev-devel -y
 yum install git
+
+
 
 
 #安装mbedtls
@@ -42,8 +46,19 @@ echo '/usr/local/lib' >> /etc/ld.so.conf.d/local.conf
 echo "/usr/local/lib" >> /etc/ld.so.conf
 /sbin/ldconfig
 
+#安装ifconfig
+yum install net-tools.x86_64 
+yum install crontabs
+
 #打开防火墙端口
 firewall-cmd --zone=public --add-port=8816/tcp --permanent 
 firewall-cmd --reload
+firewall-cmd --zone=public --list-all
+systemctl status firewalld
 #如果make出错，用下面命令configure
 #./configure --with-sodium-include=/usr/local/include --with-sodium-lib=/usr/local/lib --with-mbedtls-include=/usr/local/include --with-mbedtls-lib=/usr/local/lib
+
+git clone https://github.com/yysunq/vpsbash.git
+cd vpsbash
+chmod a+x shadowsocks
+chmod a+x ssguardian.sh
