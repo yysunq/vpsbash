@@ -1,4 +1,5 @@
 #!/bin/sh
+#CentOS 7 x64
 yum update
 
 yum install epel-release -y
@@ -63,6 +64,12 @@ cd vpsbash
 chmod a+x shadowsocks
 chmod a+x ssguardian.sh
 
+#重启自动开启
 cp ./shadowsocks /etc/init.d/
 echo "/etc/init.d/shadowsocks start" >> /etc/rc.d/rc.local
 chmod a+x /etc/rc.d/rc.local
+
+#配置crontab
+cp ./ssguardian.sh /usr/local/bin
+echo "0 6 * * * /sbin/reboot" >> /var/spool/cron/root
+echo "*/5 * * * * /usr/local/bin/ssguardian.sh" >> /var/spool/cron/root
