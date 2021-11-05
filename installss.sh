@@ -62,3 +62,7 @@ git clone https://github.com/yysunq/vpsbash.git
 cd vpsbash
 chmod a+x shadowsocks
 chmod a+x ssguardian.sh
+
+cp ./shadowsocks /etc/init.d/
+echo "/etc/init.d/shadowsocks start" >> /etc/rc.d/rc.local
+chmod a+x /etc/rc.d/rc.local
