@@ -73,3 +73,7 @@ chmod a+x /etc/rc.d/rc.local
 cp ./ssguardian.sh /usr/local/bin
 echo "0 6 * * * /sbin/reboot" >> /var/spool/cron/root
 echo "*/5 * * * * /usr/local/bin/ssguardian.sh" >> /var/spool/cron/root
+
+
+#启动一个实例
+./shadowsocks start
