@@ -1,11 +1,11 @@
 #!/bin/sh
 #CentOS 7 x64
-yum update
+yum update -y
 
 yum install epel-release -y
 yum install gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto udns-devel libev-devel -y
-yum install git
-yum install wget
+yum install git -y
+yum install wget -y
 
 #安装mbedtls
 if [ -f "mbedtls-2.5.1.tar.gz" ]; then
@@ -67,8 +67,8 @@ echo "/usr/local/lib" >> /etc/ld.so.conf
 /sbin/ldconfig
 
 #安装ifconfig
-yum install net-tools.x86_64 
-yum install crontabs
+yum install net-tools.x86_64 -y
+yum install crontabs -y
 
 #打开防火墙端口
 firewall-cmd --zone=public --add-port=8816/tcp --permanent 
