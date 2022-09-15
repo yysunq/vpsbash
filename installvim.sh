@@ -23,3 +23,8 @@ echo "nnoremap <C-t> :NERDTreeToggle<CR>" >> ~/.vimrc
 echo "nnoremap <C-f> :NERDTreeFind<CR>" >> ~/.vimrc
 echo "colorscheme wombat" >> ~/.vimrc
 echo "set number" >> ~/.vimrc
+echo "set softtabstop=4" >> ~/.vimrc
+echo "set tabstop=4" >> ~/.vimrc
+echo "set shiftwidth=4" >> ~/.vimrc
+echo "set expandtab" >> ~/.vimrc
+echo "set list" >> ~/.vimrc
