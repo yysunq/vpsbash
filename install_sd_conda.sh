@@ -1,7 +1,8 @@
 #!/bin/sh
 #ubuntu 20.4 x64
 apt update -y
-apt install htop vim tmux git curl wget -y
+apt upgrade -y
+apt install vim tmux git curl wget glances -y
 
 #set conda 
 #ustc mirror
