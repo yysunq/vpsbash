@@ -2,7 +2,7 @@
 #ubuntu 20.4 x64
 apt update -y
 apt upgrade -y
-apt install vim tmux git curl wget glances -y
+apt install vim tmux git curl wget glances shadowsocks-libev -y
 
 #set conda 
 #ustc mirror
