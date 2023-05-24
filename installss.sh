@@ -22,15 +22,15 @@ make install
 cd ..
 
 #安装libsodium
-if [ -f "libsodium-1.0.17.tar.gz" ]; then
-  rm -f libsodium-1.0.17.tar.gz
+if [ -f "libsodium-1.0.18.tar.gz" ]; then
+  rm -f libsodium-1.0.18.tar.gz
 fi
-if [ -d "./libsodium-1.0.17" ]; then
-  rm -f -r ./libsodium-1.0.17
+if [ -d "./libsodium-1.0.18" ]; then
+  rm -f -r ./libsodium-1.0.18
 fi
-wget https://download.libsodium.org/libsodium/releases/libsodium-1.0.17.tar.gz --no-check-certificate
-tar -zxvf  libsodium-1.0.17.tar.gz
-cd libsodium-1.0.17
+wget https://download.libsodium.org/libsodium/releases/libsodium-1.0.18.tar.gz --no-check-certificate
+tar -zxvf  libsodium-1.0.18.tar.gz
+cd libsodium-1.0.18
 ./configure
 make && make check
 make install
@@ -71,6 +71,7 @@ yum install net-tools.x86_64 -y
 yum install crontabs -y
 
 #打开防火墙端口
+firewall-cmd --zone=public --add-port=22/tcp --permanent 
 firewall-cmd --zone=public --add-port=8816/tcp --permanent 
 firewall-cmd --zone=public --add-port=8525/tcp --permanent 
 firewall-cmd --reload
