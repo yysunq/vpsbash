@@ -24,7 +24,7 @@ chmod a+x run.sh
 cp ./mygpt.service /etc/systemd/system/
 cp ./run.sh ../ChatGPT-Next-Web
 systemctl enable mygpt
-systemctl start myapp
+systemctl start mygpt
 
 #iptables -vL --line-number
 #iptables -I INPUT -p tcp --dport 8818 -j ACCEPT
