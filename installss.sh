@@ -3,7 +3,7 @@
 yum update -y
 
 yum install epel-release -y
-yum install gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto udns-devel libev-devel -y
+yum install gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto udns-devel libev-devel lsof -y
 yum install git -y
 yum install wget -y
 
