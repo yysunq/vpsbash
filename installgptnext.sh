@@ -24,6 +24,7 @@ fi
 git clone https://github.com/yysunq/vpsbash.git
 cd vpsbash
 chmod a+x run.sh
+sed -i 's|/root/gpt|'"$current_path"'|g' ./run.sh
 sed -i 's|/root/gpt|'"$current_path"'|g' ./mygpt.service
 #cp ./mygpt.service /etc/systemd/system/
 #cp ./run.sh ../ChatGPT-Next-Web
