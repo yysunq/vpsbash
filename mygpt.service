@@ -1,17 +1,17 @@
-[Unit]$
-Description=My GPT Project$
-After=network.target$
-$
-[Service]$
-Environment=NODE_PORT=8818$
-Environment=OPENAI_API_KEY=sk-ubAKUbHVqpiX0Z71InXghb2dCPtkjSnWM569i6Z7DX57GWCk$
-Environment=BASE_URL=https://api.chatanywhere.cn$
-Environment=PORT=8818$
-Type=simple$
-User=root$
-WorkingDirectory=/root/gpt/ChatGPT-Next-Web$
-ExecStart=/usr/local/bin/yarn start$
-Restart=always$
-$
-[Install]$
-WantedBy=multi-user.target$
+[Unit]
+Description=My GPT Project
+After=network.target
+
+[Service]
+Environment=NODE_PORT=8818
+Environment=OPENAI_API_KEY=sk-ubAKUbHVqpiX0Z71InXghb2dCPtkjSnWM569i6Z7DX57GWCk
+Environment=BASE_URL=https://api.chatanywhere.cn
+Environment=PORT=8818
+Type=simple
+User=root
+WorkingDirectory=/root/gpt/ChatGPT-Next-Web
+ExecStart=/usr/local/bin/yarn start
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
