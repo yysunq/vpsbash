@@ -15,7 +15,7 @@ echo 'export BASE_URL=https://api.chatanywhere.cn' >> .env.local
 echo 'export PORT=8818' >> .env.local
 yarn install
 source ./.env.local
-yarn build
+#yarn build
 
 cd ..
 if [ -d "./vpsbash" ]; then
@@ -28,9 +28,9 @@ sed -i 's|/root/gpt|'"$current_path"'|g' ./run.sh
 sed -i 's|/root/gpt|'"$current_path"'|g' ./mygpt.service
 cp ./mygpt.service /etc/systemd/system/
 cp ./run.sh ../ChatGPT-Next-Web
-systemctl enable mygpt
-systemctl start mygpt
-systemctl status mygpt
+#systemctl enable mygpt
+#systemctl start mygpt
+#systemctl status mygpt
 
 #iptables -vL --line-number
 #iptables -I INPUT -p tcp --dport 8818 -j ACCEPT
