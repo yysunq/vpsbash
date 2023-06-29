@@ -16,6 +16,7 @@ echo 'export PORT=8818' >> .env.local
 yarn install
 source ./.env.local
 yarn build
+tar -czvf chatgpt.tar.gz ./.next
 
 cd ..
 if [ -d "./vpsbash" ]; then
@@ -31,7 +32,6 @@ cp ./run.sh ../ChatGPT-Next-Web
 systemctl enable mygpt
 systemctl start mygpt
 systemctl status mygpt
-
 #iptables -vL --line-number
 #iptables -I INPUT -p tcp --dport 8818 -j ACCEPT
 #service iptables save
