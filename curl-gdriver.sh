@@ -2,7 +2,7 @@
 
 #name the final output file name
 #exp:filename='codegeex2-ggml.bin'
-filename='RWKV-4-Raven-7B-v12-Eng49%-Chn49%-Jpn1%-Other1%-20230530-ctx8192.pt'
+filename='RWKV-4-Raven-7B-v12-Eng49%-Chn49%-Jpn1%-Other1%-20230530-ctx8192.pth'
 
 #to get fileid, in googledriver select file to share, get copy link
 #like this https://drive.google.com/file/d/1NmmGux0pIFSEzKKkEzuxvo7hn4HfsRSI/view?usp=sharing 
@@ -21,11 +21,5 @@ accesstoken='ya29.a0AfB_byCs7JXNtyw01G9zoi0QXELxukOBjwTUmpeht_G28DKoA69Vcac7c4Zj
 #run!!!!
 curl -H "Authorization: Bearer ${accesstoken}" https://www.googleapis.com/drive/v3/files/${fileid}=media -o ${filename}
 
-#curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
-#curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
-#rm ./cookie
-# Unzip
-#unzip -q ${filename}
-#rm ${filename}
 
 
