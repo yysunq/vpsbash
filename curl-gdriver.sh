@@ -1,15 +1,31 @@
 #!/bin/bash
 
+#name the final output file name
+#exp:filename='codegeex2-ggml.bin'
+filename='RWKV-4-Raven-7B-v12-Eng49%-Chn49%-Jpn1%-Other1%-20230530-ctx8192.pt'
 
-# Download zip dataset from Google Drive
-#filename='codegeex2-ggml.bin'
-#fileid='1Xr2zJScKveMdI_UV5jT5Rs6EYuUf5XiX'
-filename='chatglm2-ggml.bin'
-fileid='1-12UHSwunFMPcxYO052y5v-9oNNsOpjz'
-curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
-curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
-rm ./cookie
+#to get fileid, in googledriver select file to share, get copy link
+#like this https://drive.google.com/file/d/1NmmGux0pIFSEzKKkEzuxvo7hn4HfsRSI/view?usp=sharing 
+#exp:fileid='1NmmGux0pIFSEzKKkEzuxvo7hn4HfsRSI'
+fileid='1NmmGux0pIFSEzKKkEzuxvo7hn4HfsRSI'
 
+#to get accesstoken
+#https://developers.google.com/oauthplayground/ => 
+#Step1 select Driver API v3 => 
+#Step1 select https://www.googleapis.com/auth/drive.readonly => 
+#Step1 push button "Authorize APIS" =>
+#Step2 push button "Exchange authorization code for tokens" to generate Access token
+#exp:accesstoken='ya29.a0AfB_byCs7JXNtyw01G9zoi0QXELxukOBjwTUmpeht_G28DKoA69Vcac7c4Zji-0kj0VLVD0C0Ol33pTabpTT49_gs_D8qNbqtP5WhBw1VFz-E4ME5U75fTI_ZJdMKKyTZiM7WkS_HbArYAlf7Aeb_pYydLfYyc0bERdL0QaCgYKAf0SARMSFQHsvYlsO4fPAyFXh6daxcowaAUn4w0173'
+accesstoken='ya29.a0AfB_byCs7JXNtyw01G9zoi0QXELxukOBjwTUmpeht_G28DKoA69Vcac7c4Zji-0kj0VLVD0C0Ol33pTabpTT49_gs_D8qNbqtP5WhBw1VFz-E4ME5U75fTI_ZJdMKKyTZiM7WkS_HbArYAlf7Aeb_pYydLfYyc0bERdL0QaCgYKAf0SARMSFQHsvYlsO4fPAyFXh6daxcowaAUn4w0173'
+
+#run!!!!
+curl -H "Authorization: Bearer ${accesstoken}" https://www.googleapis.com/drive/v3/files/${fileid}=media -o ${filename}
+
+#curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
+#curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
+#rm ./cookie
 # Unzip
 #unzip -q ${filename}
 #rm ${filename}
+
+
