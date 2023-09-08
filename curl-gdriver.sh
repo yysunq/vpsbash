@@ -19,6 +19,7 @@ fileid='1-8SInoJQVeiEMkNtLC0bREZO9VGwDzG5'
 accesstoken='ya29.a0AfB_byC5tJxtQ0fVQua-MCT_v471O4Yojzk4d0C7t65tGj2_U7Ye5KiXlWRJEzfeC6XqKrsQoCs7aaTeFLVXiOp_FYsL5A-MKO5vQLIpafrgUYPmZJUcMreQ4pjbD4muJwDGXIox_4ePy9yGO_dWDSEUo_RBOi67nxqm9qy6aCgYKAQ0SARMSFQGOcNnCjaUQVw_hdNZDioKHFZ-0Rg0175'
 
 #run!!!!
+echo Start downloading ${filename} from google driver with fileid=${fileid}!!!!!
 curl -C - -H "Authorization: Bearer ${accesstoken}" "https://www.googleapis.com/drive/v3/files/${fileid}?alt=media" -o ${filename}
 
 
