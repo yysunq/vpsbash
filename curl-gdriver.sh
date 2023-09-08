@@ -16,10 +16,10 @@ fileid='1-8SInoJQVeiEMkNtLC0bREZO9VGwDzG5'
 #Step1 push button "Authorize APIS" =>
 #Step2 push button "Exchange authorization code for tokens" to generate Access token
 #exp:accesstoken='ya29.a0AfB_byCs7JXNtyw01G9zoi0QXELxukOBjwTUmpeht_G28DKoA69Vcac7c4Zji-0kj0VLVD0C0Ol33pTabpTT49_gs_D8qNbqtP5WhBw1VFz-E4ME5U75fTI_ZJdMKKyTZiM7WkS_HbArYAlf7Aeb_pYydLfYyc0bERdL0QaCgYKAf0SARMSFQHsvYlsO4fPAyFXh6daxcowaAUn4w0173'
-accesstoken='ya29.a0AfB_byDGWh4iZFfjosUTtlL2-eaAq2owBnk0wgXiKd4v9GXq-TehxrRp5Y0kAgRbE-OXmRF29J9UBvu9g2O4FbvGR8mvsQruMu6pz7yiiemNmu9a-kc_kDOmC2VPi2VHnC4x1nACVQ7SGe-oCO47z1X_SHCPvNX8a5oeRQaCgYKAfUSARMSFQHsvYlslE7Exu0TJOElpl5ZlQKNGw0173'
+accesstoken='ya29.a0AfB_byC5tJxtQ0fVQua-MCT_v471O4Yojzk4d0C7t65tGj2_U7Ye5KiXlWRJEzfeC6XqKrsQoCs7aaTeFLVXiOp_FYsL5A-MKO5vQLIpafrgUYPmZJUcMreQ4pjbD4muJwDGXIox_4ePy9yGO_dWDSEUo_RBOi67nxqm9qy6aCgYKAQ0SARMSFQGOcNnCjaUQVw_hdNZDioKHFZ-0Rg0175'
 
 #run!!!!
-curl -H "Authorization: Bearer ${accesstoken}" "https://www.googleapis.com/drive/v3/files/${fileid}?alt=media" -o ${filename}
+curl -C - -H "Authorization: Bearer ${accesstoken}" "https://www.googleapis.com/drive/v3/files/${fileid}?alt=media" -o ${filename}
 
 
 
