@@ -19,7 +19,7 @@ fileid='1-8SInoJQVeiEMkNtLC0bREZO9VGwDzG5'
 accesstoken='ya29.a0AfB_byDGWh4iZFfjosUTtlL2-eaAq2owBnk0wgXiKd4v9GXq-TehxrRp5Y0kAgRbE-OXmRF29J9UBvu9g2O4FbvGR8mvsQruMu6pz7yiiemNmu9a-kc_kDOmC2VPi2VHnC4x1nACVQ7SGe-oCO47z1X_SHCPvNX8a5oeRQaCgYKAfUSARMSFQHsvYlslE7Exu0TJOElpl5ZlQKNGw0173'
 
 #run!!!!
-echo curl -H \"Authorization: Bearer ${accesstoken}\" https://www.googleapis.com/drive/v3/files/${fileid}?alt=media -o ${filename}
+curl -H "Authorization: Bearer ${accesstoken}" "https://www.googleapis.com/drive/v3/files/${fileid}?alt=media" -o ${filename}
 
 
 
