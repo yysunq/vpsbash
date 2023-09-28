@@ -4,9 +4,10 @@ After=network.target
 
 [Service]
 Environment=NODE_PORT=8818
-Environment=OPENAI_API_KEY=sk-ubAKUbHVqpiX0Z71InXghb2dCPtkjSnWM569i6Z7DX57GWCk
+Environment=OPENAI_API_KEY=sk-13viORraItVf2IlYExYIJIG80gVJ3jlv5S7AhZz6eDN0X9r6
 Environment=BASE_URL=https://api.chatanywhere.cn
 Environment=PORT=8818
+Environment=CODE=q1w2e3r4t5y6u7
 Type=simple
 User=root
 WorkingDirectory=/root/gpt/ChatGPT-Next-Web

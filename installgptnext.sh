@@ -10,9 +10,10 @@ echo "current ChatGPT-Next-Web install path:$current_path"
 
 git clone https://github.com/Yidadaa/ChatGPT-Next-Web
 cd ChatGPT-Next-Web
-echo 'export OPENAI_API_KEY=sk-ubAKUbHVqpiX0Z71InXghb2dCPtkjSnWM569i6Z7DX57GWCk' >> .env.local
+echo 'export OPENAI_API_KEY=sk-13viORraItVf2IlYExYIJIG80gVJ3jlv5S7AhZz6eDN0X9r6' >> .env.local
 echo 'export BASE_URL=https://api.chatanywhere.cn' >> .env.local
 echo 'export PORT=8818' >> .env.local
+echo 'export CODE=q1w2e3r4t5y6u7' >> .env.local
 yarn install
 source ./.env.local
 yarn build
