@@ -1,5 +1,5 @@
 #!/bin/sh
-#CentOS 7 x64
+#CentOS Linux release 7.9.2009 (Core) x64
 yum update -y
 
 yum install epel-release -y
