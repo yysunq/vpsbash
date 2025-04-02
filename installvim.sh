@@ -1,7 +1,7 @@
 #!/bin/sh
 #Ubuntu
 
-apt install -y vim 
+#apt install -y vim 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 if [ -f "/root/.vimrc" ]; then
