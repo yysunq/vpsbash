@@ -7,7 +7,6 @@ yum install gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto
 yum install git -y
 yum install wget -y
 
-#安装mbedtls
 if [ -f "mbedtls-2.5.1.tar.gz" ]; then
   rm -f mbedtls-2.5.1.tar.gz
 fi
@@ -15,6 +14,36 @@ if [ -d "./mbedtls-mbedtls-2.5.1" ]; then
   rm -f -r ./mbedtls-mbedtls-2.5.1
 fi
 wget https://github.com/ARMmbed/mbedtls/archive/mbedtls-2.5.1.tar.gz --no-check-certificate
+if [ $? -ne 0 ]; then
+    echo "下载mbedtls-2.5.1.tar.gz失败！错误码：$?"
+    exit 1
+fi
+
+if [ -f "libsodium-1.0.18.tar.gz" ]; then
+  rm -f libsodium-1.0.18.tar.gz
+fi
+if [ -d "./libsodium-1.0.18" ]; then
+  rm -f -r ./libsodium-1.0.18
+fi
+wget http://download.libsodium.org/libsodium/releases/libsodium-1.0.18.tar.gz --no-check-certificate
+if [ $? -ne 0 ]; then
+    echo "下载libsodium-1.0.18.tar.gz失败！错误码：$?"
+    exit 1
+fi
+
+if [ -f "c-ares-1.13.0.tar.gz" ]; then
+  rm -f c-ares-1.13.0.tar.gz
+fi
+if [ -d "./c-ares-1.13.0" ]; then
+  rm -f -r ./c-ares-1.13.0
+fi
+wget https://c-ares.org/archive/c-ares-1.13.0.tar.gz --no-check-certificate
+if [ $? -ne 0 ]; then
+    echo "下载c-ares-1.13.0.tar.gz失败！错误码：$?"
+    exit 1
+fi
+
+#安装mbedtls
 tar -zxvf  mbedtls-2.5.1.tar.gz
 cd mbedtls-mbedtls-2.5.1
 make
@@ -22,13 +51,6 @@ make install
 cd ..
 
 #安装libsodium
-if [ -f "libsodium-1.0.18.tar.gz" ]; then
-  rm -f libsodium-1.0.18.tar.gz
-fi
-if [ -d "./libsodium-1.0.18" ]; then
-  rm -f -r ./libsodium-1.0.18
-fi
-wget https://download.libsodium.org/libsodium/releases/libsodium-1.0.18.tar.gz --no-check-certificate
 tar -zxvf  libsodium-1.0.18.tar.gz
 cd libsodium-1.0.18
 ./configure
@@ -37,13 +59,6 @@ make install
 cd ..
 
 #安装c-ares
-if [ -f "c-ares-1.13.0.tar.gz" ]; then
-  rm -f c-ares-1.13.0.tar.gz
-fi
-if [ -d "./c-ares-1.13.0" ]; then
-  rm -f -r ./c-ares-1.13.0
-fi
-wget https://c-ares.haxx.se/download/c-ares-1.13.0.tar.gz --no-check-certificate
 tar -zxvf  c-ares-1.13.0.tar.gz
 cd c-ares-1.13.0
 ./configure
