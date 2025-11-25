@@ -1,7 +1,8 @@
 call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree'
-  Plug 'flazz/vim-colorschemes'
   Plug 'mhinz/vim-startify'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " nerd tree setting
