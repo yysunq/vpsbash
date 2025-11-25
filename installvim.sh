@@ -11,7 +11,6 @@ fi
 
 echo "call plug#begin('~/.vim/plugged')" >> ~/.vimrc
 echo "  Plug 'scrooloose/nerdtree'" >> ~/.vimrc
-echo "  Plug 'flazz/vim-colorschemes'" >> ~/.vimrc
 echo "  Plug 'mhinz/vim-startify'" >> ~/.vimrc
 echo "  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }" >>~/.vimrc
 echo "  Plug 'junegunn/fzf.vim'" >> ~/.vimrc
