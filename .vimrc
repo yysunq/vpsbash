@@ -11,6 +11,7 @@ nnoremap <C-n> :NERDTree<CR>
 " nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+let NERDTreeShowHidden=1
 
 " default setting begin here
 set autoindent
