@@ -31,7 +31,7 @@ set expandtab
 set smarttab
 
 " 显示行号
-set number
+" set number
 
 " 历史记录数
 set history=1000
@@ -51,7 +51,7 @@ set cmdheight=2
 filetype on
 
 " 字符集设定
-set list
+" set list
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
